@@ -1,14 +1,25 @@
-
+//プログラミング実習
+//マッチ３ゲームの製作
 
 #include"DxLib.h"
 #include"FreamControl.h"
 #include"InputControl.h"
 #include"SceneManager.h"
 
-#define SCREEN_HEIGHT (480)
-#define SCREEN_WIDTH  (640)
-#define SCREEN_COLORBIT (32)
-#define FONT_SIZE     (20)
+//マクロ定義
+
+#define SCREEN_HEIGHT (480)   //スクリーンサイズ（高さ）
+#define SCREEN_WIDTH  (640)   //スクリーンサイズ（幅）
+#define SCREEN_COLORBIT (32)　//スクリーンカラービット
+#define FONT_SIZE     (20)　　//文字サイズ
+
+//型定義
+
+//グローバル変数宣言
+
+//プロトタイプ宣言
+
+//プログラムの開始
 
 int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPSTR ipCmdLine, _In_ int nShowCmd)
 {
