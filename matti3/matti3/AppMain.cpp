@@ -1,21 +1,61 @@
+
+
 #include"DxLib.h"
+#include"FreamControl.h"
+#include"InputControl.h"
+#include"SceneManager.h"
+
+#define SCREEN_HEIGHT (480)
+#define SCREEN_WIDTH  (640)
+#define SCREEN_COLORBIT (32)
+#define FONT_SIZE     (20)
 
 int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPSTR ipCmdLine, _In_ int nShowCmd)
 {
+	//ウィンドウタイトル設定
+	SetMainWindowText("Match 3 Puzzle");
 	//ウィンドウモードで起動
 	ChangeWindowMode(TRUE);
+	//画面サイズの最大サイズ,カラービット数を設定
+	SetGraphMode(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_COLORBIT);
 
 	//Dxライブラリの初期化処理
-	if (DxLib_Init() == -1)
+	//エラーが発生したら、終了する
+	if (DxLib_Init() == D_ERROR)
 	{
-		return -1;
+		return D_ERROR;
 	}
 
-	//入力待機
-	WaitKey();
+	//描画先画面を裏にする
+	SetDrawScreen(DX_SCREEN_BACK);
 
-	//Dxライブラリの終了処理
-	DxLib_End();
+	//文字サイズを設定
+	SetFontSize(FONT_SIZE);
+
+	//ゲームループ
+	while (ProcessMessage() != D_ERROR && Input_Escape() == FALSE)
+	{
+		//入力制御機能更新処理
+		Input_Update();
+
+		//シーンマネージャー更新処理
+		SceneManager_Update();
+
+		//画面クリア
+		ClearDrawScreen();
+
+		//シーンマネージャー描画処理
+		SceneManager_Draw();
+
+		//フレームレート制御処理
+		FreamControl_Update();
+
+		//画面の内容を表画面に反映
+		ScreenFlip();
+
+	}
+	//Dxライブラリの使用の終了処理
+	DxLib_END();
 
 	return 0;
 }
