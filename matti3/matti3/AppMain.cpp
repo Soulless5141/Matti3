@@ -1,10 +1,10 @@
 //プログラミング実習
 //マッチ３ゲームの製作
 
-#include"DxLib.h"
-#include"FreamControl.h"
-#include"InputControl.h"
-#include"SceneManager.h"
+#include "DxLib.h"
+#include "FreamControl.h"
+#include "InputControl.h"
+#include "SceneManager.h"
 
 //マクロ定義
 

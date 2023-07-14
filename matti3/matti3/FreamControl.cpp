@@ -1,5 +1,5 @@
-#include"FreamControl.h"
-#include"DxLib.h"
+#include "FreamControl.h"
+#include "DxLib.h"
 
 //É}ÉNÉçíËã`
 
