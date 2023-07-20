@@ -21,5 +21,50 @@ int GameOverScene_Initialize(void)
 	//画像読み込み
 	GameOverImage = LoadGraph("images/gameover.png");
 	//音源読み込み
-	GameOverSE = LoadSoundMen("sounds/gameover_se.mp3");
+	GameOverSE = LoadSoundMem("sounds/gameover_se.mp3");
+
+	GameOverFlag = FALSE;
+
+	//エラーチェック
+	if (GameOverImage == D_ERROR)
+	{
+		ret = D_ERROR;
+	}
+	if (GameOverSE == D_ERROR)
+	{
+		ret = -D_ERROR;
+	}
+
+	return ret;
+}
+
+//ゲームオーバー画面:更新処理
+//引数:なし
+//戻り値:なし
+
+void GameOverScene_Update(void)
+{
+	//ゲームオーバー効果音再生チェック
+	if (CheckSoundMem(GameOverSE) == 0)
+	{
+		if (GameOverFlag == TRUE)
+		{
+			Change_Scene(E_GAME_OVER);
+		}
+		else
+		{
+			PlaySoundMem(GameOverSE, DX_PLAYTYPE_BACK);
+			GameOverFlag = TRUE;
+		}
+	}
+}
+
+//ゲームオーバー画面:描画処理
+//引数:なし
+//戻り値:なし
+
+void GameOverScene_Draw(void)
+{
+	//ゲームオーバー画像表示
+	DrawGraph(0, 0, GameOverImage, FALSE);
 }

@@ -30,13 +30,13 @@ int GameClearImage_Initialize(void)
 	GameClearFlag = 0;
 
 	//エラーチェック
-	if (GameClearImage == -1)
+	if (GameClearImage == D_ERROR)
 	{
-		ret = -1;
+		ret = D_ERROR;
 	}
-	if (GameClearSE == -1)
+	if (GameClearSE == D_ERROR)
 	{
-		ret = -1;
+		ret = D_ERROR;
 	}
 
 	return ret;
@@ -49,7 +49,7 @@ int GameClearImage_Initialize(void)
 void  GameClearScene_Update(void)
 {
 	//ゲームクリア効果音再生チェック
-	if (CheckSoundMen(GameClearSE) == 0)
+	if (CheckSoundMem(GameClearSE) == 0)
 	{
 		if (GameClearFlag == TRUE)
 		{
@@ -69,5 +69,5 @@ void  GameClearScene_Update(void)
 
 void GameClearScene_Draw(void)
 {
-	DrawGraph(0,0, GameClearImage,FALSE)
+	DrawGraph(0, 0, GameClearImage, FALSE);
 }
