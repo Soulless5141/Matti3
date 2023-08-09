@@ -1,7 +1,7 @@
-#include"TitleScene.h"
-#include"DxLib.h"
-#include"InputControl.h"
-#include"SceneManager.h"
+#include "TitleScene.h"
+#include "DxLib.h"
+#include "InputControl.h"
+#include "SceneManager.h"
 
 //É}ÉNÉçíËã`
 

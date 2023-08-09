@@ -1,5 +1,5 @@
-#include"DxLib.h"
-#include"InputControl.h"
+#include "DxLib.h"
+#include "InputControl.h"
 
 //変数宣言
 int old_button;
@@ -71,6 +71,21 @@ int GetOldKey(int key)
 //戻り値:TRUE(入力された)、FALSE(未入力)
 
 int GetNowKey(int key)
+{
+	int ret = FALSE;
+
+	if ((key & now_button) != FALSE)
+	{
+		ret = TRUE;
+	}
+
+	return ret;
+}
+
+//入力制御機能:入力情報取得処理(押した瞬間)
+//引数:指定するマウスのボタン
+//戻り値:TRUE(入力された)、FALSE(未入力)
+int GetNowFlg(int key)
 {
 	int ret = FALSE;
 	int keyflg = now_button & ~old_button;

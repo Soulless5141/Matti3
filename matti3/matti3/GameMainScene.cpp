@@ -5,8 +5,8 @@
 
 //マクロ定義
 
-#define TIMELIMIT　　　　　　(3600*3)  //制限時間
-#define NUMBER_IMAGE_MAX (10)　　　　　//数字画像数
+#define TIMELIMIT				(3600*3)  //制限時間
+#define NUMBER_IMAGE_MAX (10)				//数字画像数
 
 //型定義
 

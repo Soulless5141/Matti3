@@ -3,9 +3,9 @@
 #include "SceneManager.h"
 
 //マクロ定義
-// 
+
 //型定義
-// 
+
 //変数宣言
 
 int GameClearImage;
