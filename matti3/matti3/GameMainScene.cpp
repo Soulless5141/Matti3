@@ -39,7 +39,7 @@ int GmaeMainScene_Initialize(void)
 	ret = StageInitialize();
 
 	//エラーチェック
-	for (i = 0; NUMBER_IMAGE_MAX; i++)
+	for (i = 0; i < NUMBER_IMAGE_MAX; i++)
 	{
 		if (NumberImage[i] == D_ERROR)
 		{
@@ -60,6 +60,7 @@ int GmaeMainScene_Initialize(void)
 		GameLevel++;          //ゲームレベルの更新
 		Set_StageMission(3);  //ミッションを増やす
 	}
+	GameTime = TIMELIMIT;     //制限時間の初期化
 	return ret;
 }
 

@@ -11,8 +11,8 @@
 
 #define ITEM_MAX  (8)          //アイテム最大数
 
-#define SELECT_CORSOR (0)
-#define NEXT_CORSOR (1)
+#define SELECT_CURSOR (0)
+#define NEXT_CURSOR (1)
 #define TMP_CURSOR (2)
 
 //型定義
@@ -45,7 +45,7 @@ T_Object Block[HEIGHT][WIDTH];   //ブロックオブジェクトデータ
 T_CURSOR Select[3];              //セレクトカーソル座標
 int Item[ITEM_MAX];
 int ClickStatus;
-int Stage_Stage;
+int Stage_State;
 int Stage_Mission;
 int Stage_Score;
 int ClearFlag;
@@ -54,7 +54,7 @@ int BlockImage[BLOCK_IMAGE_MAX]; //ブロック画像
 int StageImage;                  //背景用画像
 
 int ClickSE;                     //クリックSE
-int FabeOutSE;					 //フェードアウトSE
+int FadeOutSE;					 //フェードアウトSE
 int MoveBlockSE;				 //ブロック移動SE
 
 //プロトタイプ宣言
@@ -247,19 +247,19 @@ void SelectBlock(void)
 	//選択ブロックの範囲を制御
 	if (Select[SELECT_CURSOR].x < 0)
 	{
-		Select[SELECT_CURSIR].x = 0;
+		Select[SELECT_CURSOR].x = 0;
 	}
 	if (Select[SELECT_CURSOR].x > WIDTH - 3)
 	{
-		Select[SELECT_CURSIR].x = WIDTH - 3;
+		Select[SELECT_CURSOR].x = WIDTH - 3;
 	}
 	if (Select[SELECT_CURSOR].y < 0)
 	{
-		Select[SELECT_CURSIR].y = 0;
+		Select[SELECT_CURSOR].y = 0;
 	}
 	if (Select[SELECT_CURSOR].y > HEIGHT - 3)
 	{
-		Select[SELECT_CURSIR].y = HEIGHT - 3;
+		Select[SELECT_CURSOR].y = HEIGHT - 3;
 	}
 
 	//クリックでブロックを選択
@@ -288,7 +288,7 @@ void SelectBlock(void)
 	if (ClickStatus == E_SECOND)
 	{
 		TmpBlock = Block[Select[NEXT_CURSOR].y + 1][Select[NEXT_CURSOR].x + 1].image;
-		Block[Select[NEXT_CURSOR].y + 1][Select[NEXT_CURSOR].x + 1].image = Block[Select[TMP_CURSR].y + 1][Select[TMP_CURSOR].x + 1].image;
+		Block[Select[NEXT_CURSOR].y + 1][Select[NEXT_CURSOR].x + 1].image = Block[Select[TMP_CURSOR].y + 1][Select[TMP_CURSOR].x + 1].image;
 		Block[Select[TMP_CURSOR].y + 1][Select[TMP_CURSOR].x + 1].image = TmpBlock;
 
 		//連鎖が３つ以上か調べる。
@@ -300,7 +300,7 @@ void SelectBlock(void)
 		if (Result == 0)
 		{
 			int TmpBlock = Block[Select[NEXT_CURSOR].y + 1][Select[NEXT_CURSOR].x + 1].image;
-			Block[Select[NEXT_CURSOR].y + 1[Select[NEXT_CURSOR].x + 1].image = Block[Select[TMP_CURSOR].y + 1][Select[TMP_CURSOR].x + 1].image = TmpBlock;
+			Block[Select[NEXT_CURSOR].y + 1][Select[NEXT_CURSOR].x + 1].image = Block[Select[TMP_CURSOR].y + 1][Select[TMP_CURSOR].x + 1].image = TmpBlock;
 		}
 		else
 		{
