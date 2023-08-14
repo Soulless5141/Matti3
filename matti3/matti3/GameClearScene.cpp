@@ -18,7 +18,7 @@ int GameClearFlag;
 //ˆø”;‚È‚µ
 //–ß‚è”;ƒGƒ‰[î•ñ
 
-int GameClearImage_Initialize(void)
+int GameClearScene_Initialize(void)
 {
 	int ret = 0;
 

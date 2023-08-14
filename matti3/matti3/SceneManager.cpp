@@ -97,7 +97,7 @@ void SceneManager_Update(void)
 //引数:なし
 //戻り値:なし
 
-void SceneManager_Update(void)
+void SceneManager_Draw(void)
 {
 
 	//各画面の描画処理
@@ -126,7 +126,7 @@ void SceneManager_Update(void)
 //引数:変更するゲームモード
 //戻り値:なし
 
-void Chage_Scene(GAME_MODE mode)
+void Change_Scene(GAME_MODE mode)
 {
 	Next_Mode = mode;
 }

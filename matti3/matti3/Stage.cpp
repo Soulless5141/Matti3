@@ -465,18 +465,25 @@ int Get_StageState(void)
 //引数;なし
 //戻り値;ミッションがクリアしているか
 
+int Get_StageClearFlag(void)
+{
+	return ClearFlag;
+}
+
+//ステージ制御機能;ミッション情報取得処理
+//引数;なし
+//戻り値;ミッションがクリアしているか
 int Get_StageScore(void)
 {
 	return Stage_Score;
 }
 
 //ステージ制御機能;ミッション情報取得処理
-//引数;次ミッションに必要な数値
-//戻り値;なし
-
+//引数;なし
+//戻り値;ミッションがクリアしているか
 void Set_StageMission(int mission)
 {
-	Stage_Mission;
+	Stage_Mission += mission;
 }
 
 //ステージ制御機能;連鎖チェック処理
@@ -559,7 +566,7 @@ void combo_check_h(int y, int x, int* cnt, int* col)
 //引数;なし
 //戻り値;連鎖有無（0:無し 1:有り）
 
-void combo_check_h(int y, int x, int* cnt, int* col)
+void combo_check_w(int y, int x, int* cnt, int* col)
 {
 	int Color = 0;
 	//対象のブロックが外枠の場合はreturnで処理を抜ける
@@ -587,7 +594,7 @@ void combo_check_h(int y, int x, int* cnt, int* col)
 //引数;なし
 //戻り値;なし
 
-void sava_block(void)
+void save_block(void)
 {
 	int i, j;
 

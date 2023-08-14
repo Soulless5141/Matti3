@@ -27,7 +27,7 @@ int NumberImage[NUMBER_IMAGE_MAX];  //数字用画像
 //引数;なし
 //戻り値;エラー情報
 
-int GmaeMainScene_Initialize(void)
+int GameMainScene_Initialize(void)
 {
 	int ret = 0;
 	int i;
@@ -97,7 +97,7 @@ void GameMainScene_Update(void)
 		Change_Scene(E_GAME_OVER);
 	}
 
-	//ミッションを達成したら、ゲームクリアに遷移する。
+	//ミッションを達成したら、ゲームクリアに遷移する
 	if (Get_StageClearFlag())
 	{
 		Change_Scene(E_GAME_CLEAR);
@@ -111,7 +111,7 @@ void GameMainScene_Update(void)
 void GameMainScene_Draw(void)
 {
 	int PosX = 600;
-	int tmp_levell = GameLevel;
+	int tmp_level = GameLevel;
 	int tmp_score = Get_StageScore();
 
 	//ステージを描画
