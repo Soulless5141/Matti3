@@ -304,7 +304,8 @@ void SelectBlock(void)
 		if (Result == 0)
 		{
 			int TmpBlock = Block[Select[NEXT_CURSOR].y + 1][Select[NEXT_CURSOR].x + 1].image;
-			Block[Select[NEXT_CURSOR].y + 1][Select[NEXT_CURSOR].x + 1].image = Block[Select[TMP_CURSOR].y + 1][Select[TMP_CURSOR].x + 1].image = TmpBlock;
+			Block[Select[NEXT_CURSOR].y + 1][Select[NEXT_CURSOR].x + 1].image = Block[Select[TMP_CURSOR].y + 1][Select[TMP_CURSOR].x + 1].image;
+			Block[Select[TMP_CURSOR].y + 1][Select[TMP_CURSOR].x + 1].image = TmpBlock;
 		}
 		else
 		{
@@ -513,8 +514,8 @@ int combo_check(int y, int x)
 	int CountW = 0;
 	int ColorW = 0;
 	save_block();
-	combo_check_h(y, x, &CountW, &ColorW);
-	if (CountH < 3)
+	combo_check_w(y, x, &CountW, &ColorW);
+	if (CountW < 3)
 	{
 		restore_block();   //‚QŒÂ–¢–ž‚È‚ç–ß‚·
 	}
