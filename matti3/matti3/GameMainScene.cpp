@@ -33,7 +33,9 @@ int GameMainScene_Initialize(void)
 	int i;
 
 	//画像読込み
-	LoadDivGraph("images/number.png", NUMBER_IMAGE_MAX, NUMBER_IMAGE_MAX, 1, 60, 120, NumberImage);
+	LoadDivGraph("images/number.png", 
+		NUMBER_IMAGE_MAX, NUMBER_IMAGE_MAX, 
+		1, 60, 120, NumberImage);
 
 	//ステージ機能初期化
 	ret = StageInitialize();
@@ -51,7 +53,7 @@ int GameMainScene_Initialize(void)
 	if (GameCount == 0)
 	{
 		GameScore = 0;       //スコアの初期化
-		GameLevel = 1;       //ゲームレベルの初期化
+		GameLevel = 1;       //ゲームレベルの初期化   kaeta
 		Set_StageMission(3); //ミッションの初期化
 		GameCount++;         //次回の設定
 	}

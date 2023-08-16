@@ -75,10 +75,11 @@ int StageInitialize(void)
 	int i;
 
 	//画像読み込み
-	LoadDivGraph("images/block.png", BLOCK_IMAGE_MAX, BLOCK_IMAGE_MAX, 1, BLOCKSIZE, BLOCKSIZE, BlockImage);
+	LoadDivGraph("images/block.png", BLOCK_IMAGE_MAX, 
+		BLOCK_IMAGE_MAX, 1, BLOCKSIZE, BLOCKSIZE, BlockImage);
 	StageImage = LoadGraph("images/stage.png");
-	//音源読み込み
 
+	//音源読み込み
 	ClickSE = LoadSoundMem("sounds/click_se.mp3");
 	FadeOutSE = LoadSoundMem("sounds/fadeout_se.mp3");
 	MoveBlockSE = LoadSoundMem("sounds/moveblock_se.mp3");
@@ -138,8 +139,10 @@ void StageDraw(void) {
 	//アイテムの取得個数を描画
 	for (int i = 0;i < ITEM_MAX; i++)
 	{
-		DrawRotaGraph(540, 245 + i * 30, 0.5f, 0, BlockImage[i + 1], TRUE, 0);
-		DrawFormatString(580,235+i*30,0xffffff,"%3d",Item[i]);
+		DrawRotaGraph(540, 245 + i * 30, 0.5f, 0, 
+			BlockImage[i + 1], TRUE, 0);
+		DrawFormatString(580, 235 + i * 30, 0xffffff,
+			"%3d", Item[i]);
 	}
 
 	//ブロックを描画
@@ -149,7 +152,8 @@ void StageDraw(void) {
 		{
 			if (Block[i][j].flg == TRUE && Block[i][j].image != NULL)
 			{
-				DrawGraph(Block[i][j].x, Block[i][j].y, BlockImage[Block[i][j].image], TRUE);
+				DrawGraph(Block[i][j].x, Block[i][j].y,
+					BlockImage[Block[i][j].image], TRUE);
 			}
 		}
 	}
@@ -165,12 +169,12 @@ void StageDraw(void) {
 	SetFontSize(20);
 	DrawFormatString(590, 211, GetColor(255, 255, 255), "%3d", Stage_Mission);
 
-	////アイテムの取得個数を描画
-	//for (int i = 0; i < ITEM_MAX; i++)
-	//{
-	//	DrawRotaGraph(540, 245 + i * 30, 0.5f, BlockImage[i + 1], TRUE, 0);
-	//	DrawFormatString(580, 235 + i * 30, GetColor(255, 255, 255), "%3d", Item[i]);
-	//}
+	//アイテムの取得個数を描画
+	for (int i = 0; i < ITEM_MAX; i++)
+	{
+		DrawRotaGraph(540, 245 + i * 30, 0.5f, BlockImage[i + 1], TRUE, 0);
+		DrawFormatString(580, 235 + i * 30, GetColor(255, 255, 255), "%3d", Item[i]);
+	}
 }
 
 //ステージ制御機能;ブロック生成処理
@@ -516,7 +520,7 @@ int combo_check(int y, int x)
 	}
 
 	//３つ以上並んでいるか？
-	if (CountH >= 3 || CountW >= 3)
+	if ((CountH >= 3 || CountW >= 3))
 	{
 		if (CountH >= 3)
 		{
@@ -615,7 +619,7 @@ void restore_block(void)
 {
 	int i, j;
 
-	for (i = 0; i < HEIGHT; i++);
+	for (i = 0; i < HEIGHT; i++)
 	{
 		for (j = 0; j < WIDTH; j++)
 		{
