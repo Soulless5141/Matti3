@@ -303,9 +303,9 @@ void SelectBlock(void)
 		//連鎖が３未満なら選択ブロックを元に戻す
 		if (Result == 0)
 		{
-			int TmpBlock = Block[Select[NEXT_CURSOR].y + 1][Select[NEXT_CURSOR].x + 1].image;
+			/*int TmpBlock = Block[Select[NEXT_CURSOR].y + 1][Select[NEXT_CURSOR].x + 1].image;
 			Block[Select[NEXT_CURSOR].y + 1][Select[NEXT_CURSOR].x + 1].image = Block[Select[TMP_CURSOR].y + 1][Select[TMP_CURSOR].x + 1].image;
-			Block[Select[TMP_CURSOR].y + 1][Select[TMP_CURSOR].x + 1].image = TmpBlock;
+			Block[Select[TMP_CURSOR].y + 1][Select[TMP_CURSOR].x + 1].image = TmpBlock;*/
 		}
 		else
 		{
@@ -487,8 +487,10 @@ int Get_StageScore(void)
 //引数;なし
 //戻り値;ミッションがクリアしているか
 void Set_StageMission(int mission)
+
 {
-	Stage_Mission += mission;
+		Stage_Mission += mission;
+	
 }
 
 //ステージ制御機能;連鎖チェック処理
@@ -500,6 +502,16 @@ int combo_check(int y, int x)
 {
 	int ret = FALSE;
 
+	//横方向のチェック
+	int CountW = 0;
+	int ColorW = 0;
+	save_block();
+	combo_check_w(y, x, &CountW, &ColorW);
+	if (CountW < 3)
+	{
+		restore_block();   //２個未満なら戻す
+	}
+
 	//縦方向のチェック
 	int CountH = 0;
 	int ColorH = 0;
@@ -510,15 +522,7 @@ int combo_check(int y, int x)
 		restore_block();   //２個未満なら戻す
 	}
 
-	//横方向のチェック
-	int CountW = 0;
-	int ColorW = 0;
-	save_block();
-	combo_check_w(y, x, &CountW, &ColorW);
-	if (CountW < 3)
-	{
-		restore_block();   //２個未満なら戻す
-	}
+	
 
 	//３つ以上並んでいるか？
 	if ((CountH >= 3 || CountW >= 3))
