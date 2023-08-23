@@ -441,13 +441,22 @@ void CheckBlock(void)
 
 void CheckClear(void)
 {
-	int i;
+	int i,j;
+	j = 0;
 	for (i = 0; i < ITEM_MAX; i++)
 	{
 		if (Item[i] >= Stage_Mission)
 		{
-			ClearFlag = TRUE;
-			break;
+			j++;
+			switch (j)
+			{
+			case 8:
+				ClearFlag = TRUE;
+				break;
+			default:
+				break;
+			}
+			
 		}
 	}
 	if (ClearFlag != TRUE)
