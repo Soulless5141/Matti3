@@ -303,9 +303,9 @@ void SelectBlock(void)
 		//連鎖が３未満なら選択ブロックを元に戻す
 		if (Result == 0)
 		{
-			/*int TmpBlock = Block[Select[NEXT_CURSOR].y + 1][Select[NEXT_CURSOR].x + 1].image;
+			int TmpBlock = Block[Select[NEXT_CURSOR].y + 1][Select[NEXT_CURSOR].x + 1].image;
 			Block[Select[NEXT_CURSOR].y + 1][Select[NEXT_CURSOR].x + 1].image = Block[Select[TMP_CURSOR].y + 1][Select[TMP_CURSOR].x + 1].image;
-			Block[Select[TMP_CURSOR].y + 1][Select[TMP_CURSOR].x + 1].image = TmpBlock;*/
+			Block[Select[TMP_CURSOR].y + 1][Select[TMP_CURSOR].x + 1].image = TmpBlock;
 		}
 		else
 		{
@@ -578,6 +578,14 @@ void combo_check_h(int y, int x, int* cnt, int* col)
 	{
 		combo_check_h(y - 1, x, cnt, col);
 	}
+	if (Block[y][x + 1].image == Color)
+	{
+		combo_check_h(y, x + 1, cnt, col);
+	}
+	if (Block[y][x - 1].image == Color)
+	{
+		combo_check_h(y, x - 1, cnt, col);
+	}
 }
 
 //ステージ制御機能;連鎖チェック処理（横方向）
@@ -598,6 +606,14 @@ void combo_check_w(int y, int x, int* cnt, int* col)
 	Block[y][x].image = 0;
 	(*cnt)++;
 
+	if (Block[y + 1][x].image == Color)
+	{
+		combo_check_w(y + 1, x, cnt, col);
+	}
+	if (Block[y - 1][x].image == Color)
+	{
+		combo_check_w(y - 1, x, cnt, col);
+	}
 	if (Block[y][x + 1].image == Color)
 	{
 		combo_check_w(y, x + 1, cnt, col);
@@ -606,6 +622,7 @@ void combo_check_w(int y, int x, int* cnt, int* col)
 	{
 		combo_check_w(y, x - 1, cnt, col);
 	}
+	
 }
 
 //ステージ制御機能;ブロック情報の保存処理
