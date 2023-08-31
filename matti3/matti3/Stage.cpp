@@ -441,14 +441,14 @@ void CheckBlock(void)
 
 void CheckClear(void)
 {
-	int i,j;
-	j = 0;
-	for (i = 0; i < ITEM_MAX; i++)
+	int i,Ckosuu;
+	Ckosuu = 0;      //クリア個数を初期化
+	for (i = 0; i < ITEM_MAX; i++)       //８個のアイテムをひとつずつ調べる
 	{
-		if (Item[i] >= Stage_Mission)
+		if (Item[i] >= Stage_Mission)    //クリアしていたらjにプラス
 		{
-			j++;
-			switch (j)
+			Ckosuu++;
+			switch (Ckosuu)    //jが８の時にクリア判定を送る
 			{
 			case 8:
 				ClearFlag = TRUE;
@@ -498,7 +498,7 @@ int Get_StageScore(void)
 void Set_StageMission(int mission)
 
 {
-		Stage_Mission += mission;
+	Stage_Mission += mission;
 	
 }
 

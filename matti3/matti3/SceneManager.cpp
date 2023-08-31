@@ -89,7 +89,6 @@ void SceneManager_Update(void)
 			break;
 		default:
 			break;
-
 	}
 }
 
@@ -118,7 +117,6 @@ void SceneManager_Draw(void)
 		break;
 	default:
 		break;
-
 	}
 }
 

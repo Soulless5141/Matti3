@@ -34,7 +34,6 @@ int GameOverScene_Initialize(void)
 	{
 		ret = -D_ERROR;
 	}
-
 	return ret;
 }
 

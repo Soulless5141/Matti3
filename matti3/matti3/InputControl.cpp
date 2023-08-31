@@ -78,7 +78,6 @@ int GetNowKey(int key)
 	{
 		ret = TRUE;
 	}
-
 	return ret;
 }
 
